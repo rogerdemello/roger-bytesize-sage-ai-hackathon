@@ -16,7 +16,7 @@ See PulsePoint AI in action:
 
 ![Demo Preview](static/demo.gif)
 
-*[Watch full demo →](https://github.com/user-attachments/assets/216bcb3a-adf4-4bf8-a818-4c6563126ef5) (30s, HD)*
+*[Watch full demo →](https://github.com/user-attachments/assets/7d8e00e2-1622-4c81-8e76-2e748e59234e) (1m 17s, HD)*
 
 ## Key Features
 
