@@ -4,60 +4,315 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PulsePoint AI - Viral Reel Generator</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
     <style>
         :root {
-            --primary: #667eea;
-            --primary-hover: #764ba2;
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --success: #10b981;
+            --gradient-start: #2563eb;
+            --gradient-end: #06b6d4;
+            --accent-gradient: linear-gradient(135deg, #2563eb 0%, #0ea5e9 50%, #06b6d4 100%);
+        }
+        
+        * {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
         }
         
         .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 50%, #06b6d4 100%);
             color: white;
-            padding: 3rem 0;
+            padding: 5rem 2rem;
             text-align: center;
-            border-radius: 1rem;
-            margin-bottom: 2rem;
+            border-radius: 1.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 20px 60px rgba(37, 99, 235, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
         }
         
         .hero h1 {
             color: white;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero p {
+            color: rgba(255, 255, 255, 0.95);
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        }
+        
+        .hero p.subtitle {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .hero p.tagline {
+            font-size: 1rem;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-top: 1rem;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
         }
         
         .feature-card {
-            background: var(--card-background-color);
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            border-left: 4px solid var(--primary);
-            margin: 1rem 0;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            border: none;
+            margin: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--gradient-start), var(--gradient-end));
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(37, 99, 235, 0.2);
+        }
+        
+        .feature-card h3 {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .feature-card p {
+            color: #64748b;
+            line-height: 1.6;
         }
         
         .clip-card {
-            background: var(--card-background-color);
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            margin: 1rem 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .clip-card:hover {
+            box-shadow: 0 8px 32px rgba(37, 99, 235, 0.15);
+            transform: translateY(-4px);
         }
         
         .stat-box {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 50%, #06b6d4 100%);
             color: white;
-            padding: 1rem;
-            border-radius: 0.5rem;
+            padding: 2rem;
+            border-radius: 1rem;
             text-align: center;
             margin: 0.5rem 0;
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
+            transition: transform 0.3s;
+        }
+        
+        .stat-box:hover {
+            transform: scale(1.05);
         }
         
         .stat-box h4 {
             color: white;
             margin: 0;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        .stat-box p {
+            color: rgba(255,255,255,0.9);
+            margin: 0.5rem 0 0 0;
+        }
+        
+        button[type="submit"] {
+            background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 50%, #06b6d4 100%);
+            border: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding: 1.25rem 3rem;
+            transition: all 0.4s;
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+            border-radius: 0.75rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        button[type="submit"]:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(37, 99, 235, 0.5);
+        }
+        
+        button[type="submit"]:active {
+            transform: translateY(-2px);
+        }
+        
+        article {
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-radius: 1rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        article header {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-bottom: 2px solid rgba(37, 99, 235, 0.1);
+            border-radius: 1rem 1rem 0 0;
+        }
+        
+        article header h2 {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        details {
+            margin: 1.5rem 0;
+            border: 2px solid rgba(37, 99, 235, 0.1);
+            border-radius: 0.75rem;
+            overflow: hidden;
+        }
+        
+        details summary {
+            cursor: pointer;
+            padding: 1.25rem 1.5rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 0;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        details summary:hover {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+        }
+        
+        details[open] summary {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+        }
+        
+        input[type="file"] {
+            cursor: pointer;
+            border: 2px dashed rgba(37, 99, 235, 0.3);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            transition: all 0.3s;
+        }
+        
+        input[type="file"]:hover {
+            border-color: var(--primary);
+            background: rgba(37, 99, 235, 0.05);
+        }
+        
+        input[type="number"] {
+            border: 2px solid rgba(37, 99, 235, 0.2);
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        input[type="number"]:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
         
         .progress-container {
             display: none;
-            margin: 2rem 0;
+            margin: 3rem 0;
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        
+        .progress-container h2 {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        progress {
+            height: 2.5rem;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        progress::-webkit-progress-bar {
+            background: #e5e7eb;
+            border-radius: 1rem;
+        }
+        
+        progress::-webkit-progress-value {
+            background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 50%, #06b6d4 100%);
+            border-radius: 1rem;
+            transition: width 0.3s ease;
+        }
+        
+        progress::-moz-progress-bar {
+            background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 50%, #06b6d4 100%);
+            border-radius: 1rem;
         }
         
         .results-container {
@@ -74,22 +329,67 @@
         
         video {
             width: 100%;
-            border-radius: 0.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
         
         .thumbnail {
             width: 100%;
-            border-radius: 0.5rem;
-            margin: 0.5rem 0;
+            border-radius: 1rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .thumbnail:hover {
+            transform: scale(1.05);
         }
         
         .success-banner {
-            background: #d4edda;
-            border: 1px solid #c3e6cb;
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border: 3px solid var(--success);
             color: #155724;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            margin: 1rem 0;
+            padding: 2rem;
+            border-radius: 1rem;
+            margin: 2rem 0;
+            box-shadow: 0 8px 32px rgba(16, 185, 129, 0.3);
+            text-align: center;
+        }
+        
+        .success-banner h3 {
+            color: #155724;
+            font-size: 1.8rem;
+            margin: 0 0 0.5rem 0;
+        }
+        
+        .success-banner p {
+            color: #155724;
+            opacity: 0.9;
+        }
+        
+        #downloadAllBtn {
+            background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+            color: white;
+            border: none;
+            padding: 1.25rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 0.75rem;
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        #downloadAllBtn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+        }
+        
+        label {
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 0.5rem;
         }
     </style>
 </head>
@@ -98,25 +398,23 @@
         <!-- Hero Section -->
         <div class="hero">
             <h1>PulsePoint AI</h1>
-            <p style="font-size: 1.2rem; margin: 0;">Transform Long-Form Videos into Viral Reels with Multimodal AI</p>
-            <p style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.9;">
-                Powered by OpenAI Whisper + Sentiment Analysis + Audio Processing
-            </p>
+            <p class="subtitle">Transform Long-Form Videos into Viral Reels with Multimodal AI</p>
+            <p class="tagline">Powered by OpenAI Whisper + Sentiment Analysis + Audio Processing</p>
         </div>
 
         <!-- Feature Cards -->
-        <div class="grid">
+        <div class="feature-grid">
             <div class="feature-card">
                 <h3>Multimodal AI</h3>
-                <p>Advanced audio + text analysis identifies the most engaging moments</p>
+                <p>Advanced audio + text analysis identifies the most engaging moments in your content</p>
             </div>
             <div class="feature-card">
                 <h3>Lightning Fast</h3>
-                <p>Process hours of content in minutes with Gen AI</p>
+                <p>Process hours of content in minutes with Gen AI powered transcription</p>
             </div>
             <div class="feature-card">
                 <h3>Social Ready</h3>
-                <p>Optimized clips ready for TikTok, Reels & Shorts</p>
+                <p>Optimized clips ready for TikTok, Reels & Shorts with perfect timing</p>
             </div>
         </div>
 
@@ -124,28 +422,30 @@
         <article id="uploadSection">
             <header><h2>Upload Your Video</h2></header>
             <form id="uploadForm">
-                <label for="videoFile">
+                <label for="videoFile" style="margin-bottom: 1rem; display: block;">
                     Choose a video file (MP4, AVI, MOV, MKV)
-                    <input type="file" id="videoFile" name="video" accept="video/*" required>
+                    <input type="file" id="videoFile" name="video" accept="video/*" required style="margin-top: 1rem; padding-left: 1rem; padding-right: 1rem; padding-top: 2rem; padding-bottom: 4rem;">
                 </label>
                 
-                <details>
+                <details style="margin: 2rem 0;">
                     <summary>Advanced Settings</summary>
-                    <label for="numClips">
-                        Number of clips (3-5)
-                        <input type="number" id="numClips" min="3" max="5" value="3">
-                    </label>
-                    <label for="clipDuration">
-                        Clip duration (30-90 seconds)
-                        <input type="number" id="clipDuration" min="30" max="90" value="60">
-                    </label>
-                    <label for="minGap">
-                        Minimum gap between clips (30-120 seconds)
-                        <input type="number" id="minGap" min="30" max="120" value="60">
-                    </label>
+                    <div style="padding: 1.5rem;">
+                        <label for="numClips" style="display: block; margin-bottom: 1.5rem;">
+                            Number of clips (3-5)
+                            <input type="number" id="numClips" min="3" max="5" value="3">
+                        </label>
+                        <label for="clipDuration" style="display: block; margin-bottom: 1.5rem;">
+                            Clip duration (30-90 seconds)
+                            <input type="number" id="clipDuration" min="30" max="90" value="60">
+                        </label>
+                        <label for="minGap" style="display: block; margin-bottom: 0;">
+                            Minimum gap between clips (30-120 seconds)
+                            <input type="number" id="minGap" min="30" max="120" value="60">
+                        </label>
+                    </div>
                 </details>
                 
-                <button type="submit" id="processBtn">🚀 Generate Viral Reels</button>
+                <button type="submit" id="processBtn" style="margin-top: 2rem; width: 100%;">Generate Viral Reels</button>
             </form>
         </article>
 
@@ -161,7 +461,7 @@
         <div class="results-container" id="resultsSection">
             <!-- Success Banner -->
             <div class="success-banner" id="successBanner" style="display: none;">
-                <h3 style="margin: 0;">🎉 Success! Generated <span id="clipCount">0</span> Viral Reels</h3>
+                <h3 style="margin: 0;">Success! Generated <span id="clipCount">0</span> Viral Reels</h3>
                 <p style="margin: 0.5rem 0 0 0;">Your clips are ready to dominate social media!</p>
             </div>
 
@@ -185,24 +485,28 @@
         </div>
 
         <!-- About Section -->
-        <article>
+        <article style="margin-top: 3rem;">
             <details>
                 <summary><strong>About PulsePoint AI</strong></summary>
-                <p>
-                    <strong>PulsePoint AI</strong> uses cutting-edge Multimodal AI to convert long-form videos 
-                    into engaging short-form content.
-                </p>
-                <h4>Multimodal AI Engine:</h4>
-                <ul>
-                    <li><strong>OpenAI Whisper</strong>: Transcribes audio with high-accuracy timestamps</li>
-                    <li><strong>Sentiment Analysis</strong>: Analyzes emotional content using Transformers</li>
-                    <li><strong>Audio Processing</strong>: Detects energy spikes and rhythm patterns</li>
-                    <li><strong>Multimodal Fusion</strong>: Combines audio (60%) + text sentiment (40%)</li>
-                </ul>
-                <p style="margin-top: 1rem;">
-                    <strong>ByteSize Sage AI Hackathon 2026</strong><br>
-                    Theme: AI + Multimodal Processing + Content Intelligence
-                </p>
+                <div style="padding: 2rem;">
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                        <strong>PulsePoint AI</strong> uses cutting-edge Multimodal AI to convert long-form videos 
+                        into engaging short-form content.
+                    </p>
+                    <h4 style="margin: 2rem 0 1.5rem 0; font-size: 1.3rem;">Multimodal AI Engine:</h4>
+                    <ul style="line-height: 2; margin-bottom: 2rem;">
+                        <li style="margin-bottom: 1rem;"><strong>OpenAI Whisper</strong>: Transcribes audio with high-accuracy timestamps</li>
+                        <li style="margin-bottom: 1rem;"><strong>Sentiment Analysis</strong>: Analyzes emotional content using Transformers</li>
+                        <li style="margin-bottom: 1rem;"><strong>Audio Processing</strong>: Detects energy spikes and rhythm patterns</li>
+                        <li style="margin-bottom: 0;"><strong>Multimodal Fusion</strong>: Combines audio (60%) + text sentiment (40%)</li>
+                    </ul>
+                    <div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 2px solid rgba(37, 99, 235, 0.2);">
+                        <p style="font-size: 1.1rem; line-height: 1.8; margin: 0;">
+                            <strong style="font-size: 1.2rem;">ByteSize Sage AI Hackathon 2026</strong><br>
+                            <span style="color: #64748b;">Theme: AI + Multimodal Processing + Content Intelligence</span>
+                        </p>
+                    </div>
+                </div>
             </details>
         </article>
     </main>
