@@ -14,9 +14,9 @@ The typical workflow: upload an hour-long lecture or podcast, and get back 3-5 s
 
 See PulsePoint AI in action:
 
-[Watch Demo Video](Video/Recording.mp4)
+![Demo Preview](static/demo.gif)
 
-*Full demo: [Video/Recording.mp4](Video/Recording.mp4)*
+*[Watch full demo →](https://github.com/user-attachments/assets/216bcb3a-adf4-4bf8-a818-4c6563126ef5) (30s, HD)*
 
 ## Key Features
 
