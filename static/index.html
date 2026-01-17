@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PulsePoint AI - Viral Reel Generator</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <style>
+        :root {
+            --primary: #667eea;
+            --primary-hover: #764ba2;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-card {
+            background: var(--card-background-color);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border-left: 4px solid var(--primary);
+            margin: 1rem 0;
+        }
+        
+        .clip-card {
+            background: var(--card-background-color);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .stat-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            margin: 0.5rem 0;
+        }
+        
+        .stat-box h4 {
+            color: white;
+            margin: 0;
+        }
+        
+        .progress-container {
+            display: none;
+            margin: 2rem 0;
+        }
+        
+        .results-container {
+            display: none;
+        }
+        
+        #uploadForm {
+            margin: 2rem 0;
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        
+        video {
+            width: 100%;
+            border-radius: 0.5rem;
+        }
+        
+        .thumbnail {
+            width: 100%;
+            border-radius: 0.5rem;
+            margin: 0.5rem 0;
+        }
+        
+        .success-banner {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>🎬 PulsePoint AI</h1>
+            <p style="font-size: 1.2rem; margin: 0;">Transform Long-Form Videos into Viral Reels with Multimodal AI</p>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.9;">
+                Powered by OpenAI Whisper + Sentiment Analysis + Audio Processing
+            </p>
+        </div>
+
+        <!-- Feature Cards -->
+        <div class="grid">
+            <div class="feature-card">
+                <h3>🎯 Multimodal AI</h3>
+                <p>Advanced audio + text analysis identifies the most engaging moments</p>
+            </div>
+            <div class="feature-card">
+                <h3>⚡ Lightning Fast</h3>
+                <p>Process hours of content in minutes with Gen AI</p>
+            </div>
+            <div class="feature-card">
+                <h3>📱 Social Ready</h3>
+                <p>Optimized clips ready for TikTok, Reels & Shorts</p>
+            </div>
+        </div>
+
+        <!-- Upload Form -->
+        <article id="uploadSection">
+            <header><h2>Upload Your Video</h2></header>
+            <form id="uploadForm">
+                <label for="videoFile">
+                    Choose a video file (MP4, AVI, MOV, MKV)
+                    <input type="file" id="videoFile" name="video" accept="video/*" required>
+                </label>
+                
+                <details>
+                    <summary>Advanced Settings</summary>
+                    <label for="numClips">
+                        Number of clips (3-5)
+                        <input type="number" id="numClips" min="3" max="5" value="3">
+                    </label>
+                    <label for="clipDuration">
+                        Clip duration (30-90 seconds)
+                        <input type="number" id="clipDuration" min="30" max="90" value="60">
+                    </label>
+                    <label for="minGap">
+                        Minimum gap between clips (30-120 seconds)
+                        <input type="number" id="minGap" min="30" max="120" value="60">
+                    </label>
+                </details>
+                
+                <button type="submit" id="processBtn">🚀 Generate Viral Reels</button>
+            </form>
+        </article>
+
+        <!-- Progress Section -->
+        <article class="progress-container" id="progressSection">
+            <header><h2>Processing Video...</h2></header>
+            <p id="progressMessage">Uploading video...</p>
+            <progress id="progressBar" value="0" max="100"></progress>
+            <p style="text-align: center;"><span id="progressPercent">0</span>%</p>
+        </article>
+
+        <!-- Results Section -->
+        <div class="results-container" id="resultsSection">
+            <!-- Success Banner -->
+            <div class="success-banner" id="successBanner" style="display: none;">
+                <h3 style="margin: 0;">🎉 Success! Generated <span id="clipCount">0</span> Viral Reels</h3>
+                <p style="margin: 0.5rem 0 0 0;">Your clips are ready to dominate social media!</p>
+            </div>
+
+            <!-- Analytics -->
+            <article>
+                <header><h2>📊 AI-Powered Clip Analytics</h2></header>
+                <div class="grid" id="analyticsContainer"></div>
+            </article>
+
+            <!-- Bulk Download -->
+            <article>
+                <header><h2>📦 Bulk Download</h2></header>
+                <button id="downloadAllBtn" class="hidden">📦 Download All Reels (ZIP)</button>
+            </article>
+
+            <!-- Individual Clips -->
+            <article>
+                <header><h2>📥 Individual Reels</h2></header>
+                <div id="clipsContainer"></div>
+            </article>
+        </div>
+
+        <!-- About Section -->
+        <article>
+            <details>
+                <summary><strong>About PulsePoint AI</strong></summary>
+                <p>
+                    <strong>PulsePoint AI</strong> uses cutting-edge Multimodal AI to convert long-form videos 
+                    into engaging short-form content.
+                </p>
+                <h4>🤖 Multimodal AI Engine:</h4>
+                <ul>
+                    <li><strong>OpenAI Whisper</strong>: Transcribes audio with high-accuracy timestamps</li>
+                    <li><strong>Sentiment Analysis</strong>: Analyzes emotional content using Transformers</li>
+                    <li><strong>Audio Processing</strong>: Detects energy spikes and rhythm patterns</li>
+                    <li><strong>Multimodal Fusion</strong>: Combines audio (60%) + text sentiment (40%)</li>
+                </ul>
+                <p style="margin-top: 1rem;">
+                    <strong>ByteSize Sage AI Hackathon 2026</strong><br>
+                    Theme: AI + Multimodal Processing + Content Intelligence
+                </p>
+            </details>
+        </article>
+    </main>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
