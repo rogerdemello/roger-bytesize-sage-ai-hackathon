@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Video - PulsePoint AI</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <style>
+        body {
+            background: #fafafa;
+        }
+
+        .app-header {
+            background: white;
+            padding: 1.5rem 0;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .app-header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .upload-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        input[type="file"] {
+            border: 2px dashed #14b8a6;
+            padding: 2rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        input[type="file"]:hover {
+            background: rgba(20, 184, 166, 0.05);
+            border-color: #0d9488;
+        }
+
+        button[type="submit"] {
+            background: #14b8a6;
+            color: white;
+            font-weight: 700;
+            width: 100%;
+            padding: 1.25rem;
+            margin-top: 2rem;
+        }
+
+        button[type="submit"]:hover {
+            background: #0d9488;
+        }
+
+        .progress-section {
+            display: none;
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        progress {
+            height: 2rem;
+            border-radius: 8px;
+        }
+
+        progress::-webkit-progress-value {
+            background: #14b8a6;
+            border-radius: 8px;
+        }
+
+        progress::-moz-progress-bar {
+            background: #14b8a6;
+            border-radius: 8px;
+        }
+
+        .results-section {
+            display: none;
+        }
+
+        .clip-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .success-banner {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            border: 2px solid #10b981;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-header">
+    <div class="container">
+        <h1>PulsePoint AI - Upload Video</h1>
+    </div>
+</div>
+
+<main class="container">
+
+    <!-- Upload Section -->
+    <section class="upload-section" id="uploadSection">
+        <h2>Upload Your Video</h2>
+        <form id="uploadForm">
+            <label for="videoFile">
+                Choose a video file (MP4, AVI, MOV, MKV)
+                <input type="file" id="videoFile" name="video" accept="video/*" required>
+            </label>
+            
+            <details>
+                <summary><strong>Advanced Settings</strong></summary>
+                <div style="padding: 1.5rem 0;">
+                    <label for="numClips">
+                        Number of clips (3-5)
+                        <input type="number" id="numClips" min="3" max="5" value="3">
+                    </label>
+                    <label for="clipDuration">
+                        Clip duration (30-90 seconds)
+                        <input type="number" id="clipDuration" min="30" max="90" value="60">
+                    </label>
+                    <label for="minGap">
+                        Minimum gap between clips (30-120 seconds)
+                        <input type="number" id="minGap" min="30" max="120" value="60">
+                    </label>
+                </div>
+            </details>
+            
+            <button type="submit" id="processBtn">Generate Viral Reels</button>
+        </form>
+    </section>
+
+    <!-- Progress Section -->
+    <section class="progress-section" id="progressSection">
+        <h2>Processing Video...</h2>
+        <p id="progressMessage">Uploading video...</p>
+        <progress id="progressBar" value="0" max="100"></progress>
+        <p style="text-align: center; margin-top: 1rem;"><strong><span id="progressPercent">0</span>%</strong></p>
+    </section>
+
+    <!-- Results Section -->
+    <div class="results-section" id="resultsSection">
+        <!-- Success Banner -->
+        <div class="success-banner" id="successBanner" style="display: none;">
+            <h3 style="margin: 0;">Success! Generated <span id="clipCount">0</span> Viral Reels</h3>
+            <p style="margin: 0.5rem 0 0 0;">Your clips are ready to download!</p>
+        </div>
+
+        <!-- Analytics -->
+        <article style="background: white; padding: 2rem; border-radius: 12px; margin-bottom: 2rem;">
+            <h2>AI-Powered Clip Analytics</h2>
+            <div class="grid" id="analyticsContainer"></div>
+        </article>
+
+        <!-- Bulk Download -->
+        <article style="background: white; padding: 2rem; border-radius: 12px; margin-bottom: 2rem;">
+            <h2>Bulk Download</h2>
+            <button id="downloadAllBtn" class="hidden" style="background: #10b981; width: auto;">Download All Reels (ZIP)</button>
+        </article>
+
+        <!-- Individual Clips -->
+        <article style="background: white; padding: 2rem; border-radius: 12px;">
+            <h2>Individual Reels</h2>
+            <div id="clipsContainer"></div>
+        </article>
+    </div>
+
+</main>
+
+<script src="/static/upload.js"></script>
+</body>
+</html>

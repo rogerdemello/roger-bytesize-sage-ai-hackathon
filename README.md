@@ -10,6 +10,14 @@ PulsePoint AI helps content creators extract the most engaging moments from leng
 
 The typical workflow: upload an hour-long lecture or podcast, and get back 3-5 short clips that capture the most emotionally impactful moments - ready to share on TikTok, Instagram Reels, or YouTube Shorts.
 
+## Demo Video
+
+See PulsePoint AI in action:
+
+[Watch Demo Video](Video/Recording.mp4)
+
+*Full demo: [Video/Recording.mp4](Video/Recording.mp4)*
+
 ## Key Features
 
 - Multimodal analysis combining audio features with text sentiment

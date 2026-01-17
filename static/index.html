@@ -3,17 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PulsePoint AI - Viral Reel Generator</title>
+    <title>PulsePoint AI - Turn Long Videos into Viral Clips</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
     <style>
+        body {
+            background: #fafafa;
+        }
+
+        .hero {
+            padding: 5rem 0;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 520px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-visual {
+            background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+            border-radius: 12px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            box-shadow: 0 20px 40px rgba(20, 184, 166, 0.3);
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        .trust-section {
+            text-align: center;
+            padding: 2rem 0;
+            background: white;
+            border-radius: 12px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .feature {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #eee;
+            transition: all 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #14b8a6, #0d9488);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature h3 {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            color: #14b8a6;
+        }
+
+        .workflow {
+            background: #fff;
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .workflow ol {
+            font-size: 1.1rem;
+            line-height: 2;
+        }
+
+        .workflow ol li {
+            margin-bottom: 1rem;
+        }
+
+        .cta {
+            text-align: center;
+            background: #14b8a6;
+            color: #fff;
+            border-radius: 16px;
+            padding: 4rem 2rem;
+            box-shadow: 0 20px 40px rgba(20, 184, 166, 0.3);
+        }
+
+        .cta h2 {
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta a[role="button"] {
+            background: white;
+            color: #14b8a6;
+            font-weight: 700;
+            border: none;
+        }
+
+        .cta a[role="button"]:hover {
+            background: #f0f0f0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #777;
+        }
+
+        @media (max-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<main class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-grid">
+            <div>
+                <h1>PulsePoint AI</h1>
+                <p>
+                    Transform long lectures into viral clips with Multimodal AI.
+                    Find the most engaging moments in educational videos -
+                    so creators don't have to scrub through hours of footage.
+                </p>
+                <p style="margin-top: 1rem; font-size: 0.95rem; opacity: 0.85;">
+                    Powered by OpenAI Whisper + Sentiment Analysis + Audio Processing
+                </p>
+            </div>
+
+            <div class="hero-visual">
+                🎬
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section>
+        <h2>Why PulsePoint AI?</h2>
+
+        <div class="feature-grid">
+
+            <div class="feature">
+                <div class="feature-icon">🧠</div>
+                <h3>Multimodal Understanding</h3>
+                <p>
+                    Combines transcript sentiment with voice energy and pacing
+                    to detect moments that actually feel impactful.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">✂️</div>
+                <h3>Automatic Clip Generation</h3>
+                <p>
+                    Upload an hour-long video and receive 3–5 short clips
+                    optimized for Reels, Shorts, and TikTok.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🚀</div>
+                <h3>Ready to Publish</h3>
+                <p>
+                    Each clip includes thumbnails, timestamps, confidence scores,
+                    and metadata -no extra editing required.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
+    <style>
         :root {
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
+            --primary: #14b8a6;
+            --primary-hover: #0d9488;
             --success: #10b981;
-            --gradient-start: #2563eb;
-            --gradient-end: #06b6d4;
-            --accent-gradient: linear-gradient(135deg, #2563eb 0%, #0ea5e9 50%, #06b6d4 100%);
+            --gradient-start: #14b8a6;
+            --gradient-end: #0d9488;
+            --accent-gradient: #14b8a6;
         }
         
         * {
@@ -29,13 +251,13 @@
         }
         
         .hero {
-            background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 50%, #06b6d4 100%);
+            background: #14b8a6;
             color: white;
             padding: 5rem 2rem;
             text-align: center;
             border-radius: 1.5rem;
             margin-bottom: 3rem;
-            box-shadow: 0 20px 60px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 20px 60px rgba(20, 184, 166, 0.4);
             position: relative;
             overflow: hidden;
         }
@@ -116,19 +338,16 @@
             left: 0;
             width: 4px;
             height: 100%;
-            background: linear-gradient(180deg, var(--gradient-start), var(--gradient-end));
+            background: var(--primary);
         }
         
         .feature-card:hover {
             transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 12px 40px rgba(37, 99, 235, 0.2);
+            box-shadow: 0 12px 40px rgba(20, 184, 166, 0.2);
         }
         
         .feature-card h3 {
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--primary);
             margin-bottom: 1rem;
             font-size: 1.5rem;
             font-weight: 700;
@@ -145,23 +364,23 @@
             border-radius: 1rem;
             margin: 1.5rem 0;
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            border: 1px solid rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(20, 184, 166, 0.1);
             transition: all 0.3s;
         }
         
         .clip-card:hover {
-            box-shadow: 0 8px 32px rgba(37, 99, 235, 0.15);
+            box-shadow: 0 8px 32px rgba(20, 184, 166, 0.15);
             transform: translateY(-4px);
         }
         
         .stat-box {
-            background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 50%, #06b6d4 100%);
+            background: #14b8a6;
             color: white;
             padding: 2rem;
             border-radius: 1rem;
             text-align: center;
             margin: 0.5rem 0;
-            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 8px 24px rgba(20, 184, 166, 0.3);
             transition: transform 0.3s;
         }
         
@@ -182,13 +401,13 @@
         }
         
         button[type="submit"] {
-            background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 50%, #06b6d4 100%);
+            background: #14b8a6;
             border: none;
             font-weight: 700;
             font-size: 1.2rem;
             padding: 1.25rem 3rem;
             transition: all 0.4s;
-            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 8px 24px rgba(20, 184, 166, 0.4);
             border-radius: 0.75rem;
             cursor: pointer;
             text-transform: uppercase;
@@ -197,7 +416,7 @@
         
         button[type="submit"]:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(37, 99, 235, 0.5);
+            box-shadow: 0 12px 40px rgba(20, 184, 166, 0.5);
         }
         
         button[type="submit"]:active {
@@ -214,20 +433,17 @@
         
         article header {
             background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-            border-bottom: 2px solid rgba(37, 99, 235, 0.1);
+            border-bottom: 2px solid rgba(20, 184, 166, 0.1);
             border-radius: 1rem 1rem 0 0;
         }
         
         article header h2 {
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--primary);
         }
         
         details {
             margin: 1.5rem 0;
-            border: 2px solid rgba(37, 99, 235, 0.1);
+            border: 2px solid rgba(20, 184, 166, 0.1);
             border-radius: 0.75rem;
             overflow: hidden;
         }
@@ -242,19 +458,19 @@
         }
         
         details summary:hover {
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            background: var(--primary);
             color: white;
         }
         
         details[open] summary {
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            background: var(--primary);
             color: white;
             border-bottom: 2px solid rgba(255,255,255,0.2);
         }
         
         input[type="file"] {
             cursor: pointer;
-            border: 2px dashed rgba(37, 99, 235, 0.3);
+            border: 2px dashed rgba(20, 184, 166, 0.3);
             padding: 2rem;
             border-radius: 0.75rem;
             transition: all 0.3s;
@@ -262,18 +478,18 @@
         
         input[type="file"]:hover {
             border-color: var(--primary);
-            background: rgba(37, 99, 235, 0.05);
+            background: rgba(20, 184, 166, 0.05);
         }
         
         input[type="number"] {
-            border: 2px solid rgba(37, 99, 235, 0.2);
+            border: 2px solid rgba(20, 184, 166, 0.2);
             border-radius: 0.5rem;
             transition: all 0.3s;
         }
         
         input[type="number"]:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1);
         }
         
         .progress-container {
@@ -286,10 +502,7 @@
         }
         
         .progress-container h2 {
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--primary);
         }
         
         progress {
@@ -305,13 +518,13 @@
         }
         
         progress::-webkit-progress-value {
-            background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 50%, #06b6d4 100%);
+            background: #14b8a6;
             border-radius: 1rem;
             transition: width 0.3s ease;
         }
         
         progress::-moz-progress-bar {
-            background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 50%, #06b6d4 100%);
+            background: #14b8a6;
             border-radius: 1rem;
         }
         
@@ -395,29 +608,6 @@
 </head>
 <body>
     <main class="container">
-        <!-- Hero Section -->
-        <div class="hero">
-            <h1>PulsePoint AI</h1>
-            <p class="subtitle">Transform Long-Form Videos into Viral Reels with Multimodal AI</p>
-            <p class="tagline">Powered by OpenAI Whisper + Sentiment Analysis + Audio Processing</p>
-        </div>
-
-        <!-- Feature Cards -->
-        <div class="feature-grid">
-            <div class="feature-card">
-                <h3>Multimodal AI</h3>
-                <p>Advanced audio + text analysis identifies the most engaging moments in your content</p>
-            </div>
-            <div class="feature-card">
-                <h3>Lightning Fast</h3>
-                <p>Process hours of content in minutes with Gen AI powered transcription</p>
-            </div>
-            <div class="feature-card">
-                <h3>Social Ready</h3>
-                <p>Optimized clips ready for TikTok, Reels & Shorts with perfect timing</p>
-            </div>
-        </div>
-
         <!-- Upload Form -->
         <article id="uploadSection">
             <header><h2>Upload Your Video</h2></header>
@@ -500,7 +690,7 @@
                         <li style="margin-bottom: 1rem;"><strong>Audio Processing</strong>: Detects energy spikes and rhythm patterns</li>
                         <li style="margin-bottom: 0;"><strong>Multimodal Fusion</strong>: Combines audio (60%) + text sentiment (40%)</li>
                     </ul>
-                    <div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 2px solid rgba(37, 99, 235, 0.2);">
+                    <div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 2px solid rgba(20, 184, 166, 0.2);">
                         <p style="font-size: 1.1rem; line-height: 1.8; margin: 0;">
                             <strong style="font-size: 1.2rem;">ByteSize Sage AI Hackathon 2026</strong><br>
                             <span style="color: #64748b;">Theme: AI + Multimodal Processing + Content Intelligence</span>
@@ -511,6 +701,12 @@
         </article>
     </main>
 
-    <script src="/static/app.js"></script>
+    <footer>
+        <small>
+            © 2026 PulsePoint AI • MIT License • <a href="https://github.com/rogerdemello/roger-bytesize-sage-ai-hackathon" target="_blank">GitHub</a>
+        </small>
+    </footer>
+
+    <script src="/static/upload.js"></script>
 </body>
 </html>

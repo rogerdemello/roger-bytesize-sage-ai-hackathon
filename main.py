@@ -41,7 +41,12 @@ processing_status = {}
 
 @app.get("/", response_class=HTMLResponse)
 async def root():
-    with open("static/index.html", "r") as f:
+    with open("static/index.html", "r", encoding="utf-8") as f:
+        return HTMLResponse(content=f.read())
+
+@app.get("/app", response_class=HTMLResponse)
+async def app_page():
+    with open("static/app.html", "r", encoding="utf-8") as f:
         return HTMLResponse(content=f.read())
 
 

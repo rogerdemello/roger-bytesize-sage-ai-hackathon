@@ -8,7 +8,11 @@ import json
 from PIL import Image
 import whisper
 from transformers import pipeline
+import imageio_ffmpeg
 warnings.filterwarnings('ignore')
+
+# Set FFmpeg path for Whisper
+os.environ["PATH"] = os.path.dirname(imageio_ffmpeg.get_ffmpeg_exe()) + os.pathsep + os.environ.get("PATH", "")
 
 
 class VideoProcessor:
@@ -63,8 +67,13 @@ class VideoProcessor:
             self.transcript = result
             return result
             
+        except FileNotFoundError as e:
+            print(f"Warning: FFmpeg not found. Install FFmpeg to enable AI transcription.")
+            print(f"Falling back to audio-only analysis (no text sentiment)...")
+            return None
         except Exception as e:
             print(f"Warning: Whisper transcription failed: {str(e)}")
+            print(f"Falling back to audio-only analysis...")
             return None
     
     def analyze_sentiment(self):

@@ -63,6 +63,9 @@ temp/*
 *.mp3
 *.flac
 
+# PDFs
+*.pdf
+
 # Logs
 *.log
 
