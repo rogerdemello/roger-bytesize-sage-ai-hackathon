@@ -14,9 +14,7 @@ The typical workflow: upload an hour-long lecture or podcast, and get back 3-5 s
 
 See ClipGenius AI in action:
 
-![Demo Preview](static/demo.gif)
-
-*[Watch full demo →](https://github.com/user-attachments/assets/7d8e00e2-1622-4c81-8e76-2e748e59234e) (1m 17s, HD)*
+*[Watch full demo →](https://github.com/user-attachments/assets/41b67f7f-01bf-4f3d-a14a-86a6fc32a55b) (1 min, HD)*
 
 ## Key Features
 
@@ -119,3 +117,4 @@ Each processing job produces:
 ## License
 
 MIT License - created for ByteSize Sage AI Hackathon 2026
+
