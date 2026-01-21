@@ -11,7 +11,7 @@ import zipfile
 from video_processor import VideoProcessor
 import json
 
-app = FastAPI(title="PulsePoint AI", description="Multimodal AI for Viral Reel Generation")
+app = FastAPI(title="ClipGenius AI", description="Multimodal AI for Viral Reel Generation")
 
 # CORS middleware
 app.add_middleware(

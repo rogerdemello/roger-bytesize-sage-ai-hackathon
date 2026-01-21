@@ -1,3 +1,3 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("PulsePoint AI landing page loaded");
+  console.log("ClipGenius AI landing page loaded");
 });

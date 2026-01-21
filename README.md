@@ -1,4 +1,4 @@
-# PulsePoint AI
+# ClipGenius AI
 
 Transform long educational videos into short viral clips using multimodal AI.
 
@@ -6,13 +6,13 @@ Built for ByteSize Sage AI Hackathon 2026
 
 ## Overview
 
-PulsePoint AI helps content creators extract the most engaging moments from lengthy educational content. It analyzes both what's being said (through transcription and sentiment analysis) and how it's being said (through audio signal processing) to identify the best clips for social media.
+ClipGenius AI helps content creators extract the most engaging moments from lengthy educational content. It analyzes both what's being said (through transcription and sentiment analysis) and how it's being said (through audio signal processing) to identify the best clips for social media.
 
 The typical workflow: upload an hour-long lecture or podcast, and get back 3-5 short clips that capture the most emotionally impactful moments - ready to share on TikTok, Instagram Reels, or YouTube Shorts.
 
 ## Demo Video
 
-See PulsePoint AI in action:
+See ClipGenius AI in action:
 
 ![Demo Preview](static/demo.gif)
 
@@ -39,8 +39,8 @@ See PulsePoint AI in action:
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/rogerdemello/roger-bytesize-sage-ai-hackathon.git
-cd ByteSageAI
+git clone https://github.com/rogerdemello/ClipGenius-AI.git
+cd ClipGeniusAI
 
 # 2. Create virtual environment
 python -m venv venv
@@ -89,7 +89,7 @@ The highest-scoring segments become your output clips. This multimodal approach 
 ## Project Structure
 
 ```
-ByteSageAI/
+ClipGeniusAI/
 ├── main.py              # FastAPI backend server
 ├── video_processor.py   # Multimodal AI processing engine
 ├── static/
